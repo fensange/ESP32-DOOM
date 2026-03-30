@@ -49,7 +49,7 @@
 #define CONFIG_HW_LCD_BL_GPIO   -1
 #endif
 #ifndef CONFIG_HW_LCD_TYPE
-#define CONFIG_HW_LCD_TYPE      1   // 0=ILI9341 320x240, 1=ST7789 240x280
+#define CONFIG_HW_LCD_TYPE      0   // 0=ILI9341 320x240, 1=ST7789 240x280
 #endif
 
 // Display dimensions based on LCD type
