@@ -53,7 +53,7 @@ static const GPIOKeyMap keymap[]={
 	
 	{33, &key_use},				//cross
 	{35, &key_fire},			//circle
-	{35, &key_menu_enter},
+	{37, &key_menu_enter},
 	{0, NULL},
 };
 /*	
@@ -124,7 +124,7 @@ void jsInit()
 {
 	gpio_config_t io_conf;
     //disable pull-down mode
-    io_conf.pull_down_en = 1;
+    io_conf.pull_down_en = 0;
     //disable pull-up mode
     io_conf.pull_up_en = 0;
     //interrupt of rising edge
