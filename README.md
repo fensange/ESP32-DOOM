@@ -49,7 +49,7 @@ A port of PrBoom (Doom engine) to the ESP32-WROVER module with external PSRAM. P
 ### 1. Clone and Setup
 
 ```bash
-git clone https://github.com/AmirhoseinMasoumi/ESP32-DOOM.git
+git clone https://github.com/fensange/ESP32-DOOM.git
 cd ESP32-DOOM
 ```
 
