@@ -124,7 +124,7 @@ void jsInit()
 {
 	gpio_config_t io_conf;
     //disable pull-down mode
-    io_conf.pull_down_en = 0;
+    io_conf.pull_down_en = 1;
     //disable pull-up mode
     io_conf.pull_up_en = 0;
     //interrupt of rising edge
