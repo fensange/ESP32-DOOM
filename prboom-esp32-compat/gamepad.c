@@ -53,7 +53,7 @@ static const GPIOKeyMap keymap[]={
 	
 	{33, &key_use},				//cross
 	{35, &key_fire},			//circle
-	{37, &key_menu_enter},
+	{25, &key_menu_enter},
 	{0, NULL},
 };
 /*	
@@ -137,8 +137,7 @@ void jsInit()
 			io_conf.pin_bit_mask |= (1ULL<<keymap[i].gpio);
     //set as input mode    
     io_conf.mode = GPIO_MODE_INPUT;
-    //enable pull-up mode
-    io_conf.pull_up_en = 1;
+    //pull-ups remain disabled; use external pull-ups where needed
     gpio_config(&io_conf);
 
 
@@ -155,4 +154,3 @@ void jsInit()
 
 	lprintf(LO_INFO, "jsInit: GPIO task created.\n");
 }
-
