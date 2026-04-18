@@ -44,6 +44,13 @@ typedef struct {
 	int *key;
 } GPIOKeyMap;
 
+//Non-gamepad GPIOs where internal pull-up is explicitly enabled.
+//Keep this list to pins that are actually free on your board/project.
+static const int extraPullupPins[]={
+	16, 17,
+	0
+};
+
 //Mappings from PS2 buttons to keys
 static const GPIOKeyMap keymap[]={
 	{36, &key_up},
