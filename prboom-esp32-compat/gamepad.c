@@ -44,6 +44,13 @@ typedef struct {
 	int *key;
 } GPIOKeyMap;
 
+//Non-gamepad GPIOs where internal pull-up is explicitly enabled.
+//Keep this list to pins that are actually free on your board/project.
+static const int extraPullupPins[]={
+	16, 17,
+	0
+};
+
 //Mappings from PS2 buttons to keys
 static const GPIOKeyMap keymap[]={
 	{36, &key_up},
@@ -53,7 +60,7 @@ static const GPIOKeyMap keymap[]={
 	
 	{33, &key_use},				//cross
 	{35, &key_fire},			//circle
-	{37, &key_menu_enter},
+	{25, &key_menu_enter},
 	{0, NULL},
 };
 /*	
@@ -137,9 +144,12 @@ void jsInit()
 			io_conf.pin_bit_mask |= (1ULL<<keymap[i].gpio);
     //set as input mode    
     io_conf.mode = GPIO_MODE_INPUT;
-    //enable pull-up mode
-    io_conf.pull_up_en = 1;
-    gpio_config(&io_conf);
+	//pull-ups remain disabled; use external pull-ups where needed
+	gpio_config(&io_conf);
+
+	//Enable internal pull-ups only for explicitly-listed non-gamepad pins.
+	for (int i=0; extraPullupPins[i]!=0; i++)
+		gpio_set_pull_mode(extraPullupPins[i], GPIO_PULLUP_ONLY);
 
 
     //create a queue to handle gpio event from isr
@@ -155,4 +165,3 @@ void jsInit()
 
 	lprintf(LO_INFO, "jsInit: GPIO task created.\n");
 }
-
