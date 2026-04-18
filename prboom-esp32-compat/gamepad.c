@@ -144,12 +144,8 @@ void jsInit()
 			io_conf.pin_bit_mask |= (1ULL<<keymap[i].gpio);
     //set as input mode    
     io_conf.mode = GPIO_MODE_INPUT;
-	//pull-ups remain disabled; use external pull-ups where needed
-	gpio_config(&io_conf);
-
-	//Enable internal pull-ups only for explicitly-listed non-gamepad pins.
-	for (int i=0; extraPullupPins[i]!=0; i++)
-		gpio_set_pull_mode(extraPullupPins[i], GPIO_PULLUP_ONLY);
+    //pull-ups remain disabled; use external pull-ups where needed
+    gpio_config(&io_conf);
 
 
     //create a queue to handle gpio event from isr
